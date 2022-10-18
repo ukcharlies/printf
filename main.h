@@ -1,49 +1,37 @@
-#ifndef MAIN_H_
-#define MAIN_H_
+#ifndef MAIN_H
+#define MAIN_H
 
-#include <stdlib.h>
-#include <stdarg.h>
 #include <unistd.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int _printf(const char *format, ...);
+char _putchar(char c);
+int print_char(va_list arg);
+int print_str(va_list arg);
+int print_percent(void);
+void print_binary(unsigned int n, unsigned int *printed);
+int print_unsignedToBinary(va_list arg);
+int print_oct(va_list arg);
+int print_unsignedIntToHex(unsigned int num, char _case);
+int print_hex_base(va_list arg, char _case);
+int print_hex(va_list arg);
+int print_HEX(va_list arg);
+int print_STR(va_list arg);
+int print_int(va_list arg);
+int print_unsigned(va_list arg);
+int printIdentifiers(char next, va_list arg);
 
 /**
- * struct convert - Starting point
- *
- * Description: Defines a structure for symbols and functions
- *
- * @sym: The operator
- * @f: The function associated
+ * struct identifierStruct - structure definition of a printTypeStruct
+ * @indentifier: type
+ * @printer: function to print
  */
-
-struct convert
+typedef struct identifierStruct
 {
+char *indentifier;
+int (*printer)(va_list);
+} identifierStruct;
 
-	char *sym;
-	int (*f)(va_list);
-
-};
-typedef struct convert con_vert;
-
-
-int _putchar(char);
-int parser(const char *format, con_vert f_list[], va_list arg_list);
-int _printf(const char *format, ...);
-int print_char(va_list);
-int print_string(va_list);
-int print_percent(va_list);
-int print_integer(va_list);
-int print_number(va_list);
-
-int _puts(char *string);
-int printstr(char *format, va_list);
-int (*driver(char *format))(char *format, va_list);
-int printint(char *format, va_list pa);
-int integer(int number);
-int contadordigit(int number);
-int _abs(int number);
-int printpercent(char *format, va_list pa);
-int printhex(char *format, va_list);
-int printHEX(char *format, va_list);
-int printocta(char *format, va_list);
-int print_unsign(char *format, va_list);
-
-#endif /*MAIN_H_*/
+#endif
